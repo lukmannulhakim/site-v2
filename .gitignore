@@ -2,6 +2,8 @@
 bin/.lastup
 
 config/**/prod*
+config/docker/compose/dev.local.yml
+config/docker/env/backend/dev.local
 
 data/db/
 data/content/perms.txt

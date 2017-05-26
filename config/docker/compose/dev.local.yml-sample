@@ -1,0 +1,7 @@
+version: '2'
+
+services:
+  backend:
+    volumes:
+      - "/home/kucrut/work/wordpress/core/src:/var/www/wordpress"
+    env_file: ./config/docker/env/backend/dev.local

@@ -1,0 +1,20 @@
+VIRTUAL_HOST=wp-id.local
+
+# Change this to your user ID: `id -u`
+PUID=1000
+# Change this to your group ID: `id -g`
+PGID=1000
+
+AUTH_KEY=secret
+SECURE_AUTH_KEY=secret
+LOGGED_IN_KEY=secret
+NONCE_KEY=secret
+AUTH_SALT=secret
+SECURE_AUTH_SALT=secret
+LOGGED_IN_SALT=secret
+NONCE_SALT=secret
+
+DB_HOST=db
+DB_NAME=wordpress
+DB_USER=wordpress
+DB_PASSWORD=wordpress
