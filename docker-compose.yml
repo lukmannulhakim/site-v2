@@ -4,6 +4,7 @@ services:
   db:
     image: kucrut/mariadb
     container_name: wp-id.org-db
+    restart: always
     networks:
       - default
     volumes:
@@ -12,6 +13,7 @@ services:
   backend:
     image: kucrut/wordpress
     container_name: wp-id.org-backend
+    restart: always
     depends_on:
       - db
     links:
