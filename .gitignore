@@ -1,0 +1,11 @@
+*.sublime-*
+bin/.lastup
+
+config/**/prod*
+
+data/db/
+data/content/perms.txt
+data/content/upgrade/*
+data/content/uploads/*
+data/content/uploads/*
+!data/content/uploads/index.php

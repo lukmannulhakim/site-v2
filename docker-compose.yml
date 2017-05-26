@@ -1,0 +1,28 @@
+version: '2'
+
+services:
+  db:
+    image: kucrut/mariadb
+    container_name: wp-id.org-db
+    networks:
+      - default
+    volumes:
+      - "./data/db:/var/lib/mysql"
+
+  backend:
+    image: kucrut/wordpress
+    container_name: wp-id.org-backend
+    depends_on:
+      - db
+    links:
+      - db
+    networks:
+      - default
+      - proxy-tier
+    volumes:
+      - "./data/content:/var/www/wp-content"
+
+networks:
+  proxy-tier:
+    external:
+      name: proxy

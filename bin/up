@@ -1,0 +1,53 @@
+#!/bin/bash
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+CMD="docker-compose -f docker-compose.yml"
+CONF_DIR=config/docker/compose
+
+while [[ $# -gt 1 ]]; do
+
+  key="$1"
+
+  case $key in
+    -e|--env)
+    ENV="$2"
+    shift
+    ;;
+
+    -f|--frontend)
+    FRONT="$2"
+    shift
+    ;;
+
+    --)
+    EXTRA_ARGS=" $2"
+    ;;
+  esac
+
+  shift # past argument or value
+done
+
+if [ ! -z $ENV ]; then
+  ENV_FILE="${CONF_DIR}/${ENV}.yml"
+  ENV_LOCAL_FILE="${CONF_DIR}/${ENV}.local.yml"
+
+  if [ -f $ENV_FILE ]; then
+    CMD="${CMD} -f ${ENV_FILE}"
+  fi
+
+  if [ -f $ENV_LOCAL_FILE ]; then
+    CMD="${CMD} -f ${ENV_LOCAL_FILE}"
+  fi
+fi
+
+if [ ! -z $FRONT ]; then
+  CMD="${CMD} -f ${CONF_DIR}/${FRONT}.yml"
+
+  if [ ! -z $ENV ]; then
+    CMD="${CMD} -f ${CONF_DIR}/${FRONT}.${ENV}.yml"
+  fi
+fi
+
+echo $CMD > "${DIR}/.lastup"
+
+eval "${CMD} up${EXTRA_ARGS}"
