@@ -8,5 +8,4 @@ services:
     volumes:
       - "./config/php/dev.ini:/etc/php7/conf.d/zzzz-dev.ini:ro"
       - "./config/backend/dev:/var/www/wp-configs:ro"
-      #- "/home/kucrut/work/wordpress/core/src:/var/www/wordpress"
     env_file: ./config/docker/env/backend/dev
