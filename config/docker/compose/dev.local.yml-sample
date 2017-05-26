@@ -2,6 +2,7 @@ version: '2'
 
 services:
   backend:
-    volumes:
-      - "/home/kucrut/work/wordpress/core/src:/var/www/wordpress"
+    # If you'd like to hack WP core
+    #volumes:
+    #  - "<path to WP core files in your host system>:/var/www/wordpress"
     env_file: ./config/docker/env/backend/dev.local
