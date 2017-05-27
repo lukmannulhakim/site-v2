@@ -1,4 +1,4 @@
-VIRTUAL_HOST=wp-id.local
+VIRTUAL_HOST=wp-id.local,www.wp-id.local
 
 AUTH_KEY=secret
 SECURE_AUTH_KEY=secret

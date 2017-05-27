@@ -1,4 +1,4 @@
-VIRTUAL_HOST=wp-id.local
+VIRTUAL_HOST=wp-id.local,www.wp-id.local
 
 # Change this to your user ID: `id -u`
 PUID=1000
