@@ -1,0 +1,7 @@
+#!/bin/bash
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+if [ -f "${DIR}/.lastup" ]; then
+  eval "$( cat "${DIR}/.lastup" ) exec webpack sh -c 'HOME=/tmp/yarn yarn build'"
+fi
