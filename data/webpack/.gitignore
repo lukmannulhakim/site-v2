@@ -1,8 +1,8 @@
 node_modules
 
-plugins
-plugins/.gitkeep
-themes/
+plugins/*
+!plugins/.gitkeep
+themes/*
 !themes/.gitkeep
 
 yarn-error.log
