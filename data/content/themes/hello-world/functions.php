@@ -12,7 +12,18 @@ add_action( 'after_setup_theme', 'wpid_setup' );
  * Enqueue scripts and styles.
  */
 function wpid_enqueue_assets() {
-	wp_enqueue_style( 'yo', get_stylesheet_uri() );
+	$assets_dir_url = get_template_directory_uri();
+
+	if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
+		// When we're in dev mode, the stylesheet will be loaded by webpack dev
+		// server, hence we load its script here.
+		$assets_dir_url = str_replace( content_url(), home_url( 'webpack' ), $assets_dir_url );
+		wp_enqueue_script( 'theme', "${assets_dir_url}/assets/theme.js", false, null, true );
+	} else {
+		// In production, we don't load webpack dev server's script and only load
+		// the theme's stylesheet instead.
+		wp_enqueue_style( 'theme', "${assets_dir_url}/assets/theme.css", false, null );
+	}
 }
 add_action( 'wp_enqueue_scripts', 'wpid_enqueue_assets' );
 
