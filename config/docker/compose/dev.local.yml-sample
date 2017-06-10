@@ -6,3 +6,7 @@ services:
     #volumes:
     #  - "<path to WP core files in your host system>:/var/www/wordpress"
     env_file: ./config/docker/env/backend/dev.local
+
+  webpack:
+    # Change this to your user ID & group: `id`
+    user: 1000:1000
