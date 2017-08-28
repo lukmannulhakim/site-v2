@@ -3,7 +3,7 @@ const webpack = require( 'webpack' );
 const merge = require( 'webpack-merge' );
 const ExtractTextPlugin = require( 'extract-text-webpack-plugin' );
 
-module.exports = function( env ) {
+module.exports = function ( env ) {
 	const isDev = env === 'development';
 
 	let config = {
@@ -18,7 +18,7 @@ module.exports = function( env ) {
 			rules: [{
 				test: /\.js$/,
 				loader: 'babel-loader',
-				query: { presets: [[ 'es2015', { modules: false }]] },
+				query: { presets: [ [ 'es2015', { modules: false }] ] },
 				exclude: path.resolve( __dirname, '/node_modules/' )
 			}, {
 				test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|eot|ttf)$/,
@@ -31,7 +31,7 @@ module.exports = function( env ) {
 		},
 		performance: {
 			assetFilter: assetFilename => {
-				return ! ( /\.map$/.test( assetFilename ) )
+				return ! ( /\.map$/.test( assetFilename ) );
 			}
 		},
 		plugins: [
@@ -68,7 +68,7 @@ module.exports = function( env ) {
 				inline: true,
 				hot: false,
 				watchOptions: { poll: true }
-    		},
+			},
 			performance: {
 				maxAssetSize: 1000000, // 1 mB.
 				maxEntrypointSize: 1000000
@@ -88,7 +88,7 @@ module.exports = function( env ) {
 					minimize: true,
 					debug: false
 				}),
-				new webpack.optimize.UglifyJsPlugin( {
+				new webpack.optimize.UglifyJsPlugin({
 					beautify: false,
 					mangle: {
 						screw_ie8: true,
@@ -96,7 +96,7 @@ module.exports = function( env ) {
 					},
 					compress: { screw_ie8: true },
 					comments: false
-				} )
+				})
 			]
 		});
 	}
