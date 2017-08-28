@@ -26,7 +26,7 @@
   "scripts": {
     "build": "NODE_ENV=production webpack --env=production --config webpack.config.babel.js",
     "start": "NODE_ENV=development webpack-dev-server --env=development --config webpack.config.babel.js",
-    "lint:js": "eslint js/src",
+    "lint:js": "eslint --config ./.eslintrc.json ./themes/hello-world/assets/src/js/*js",
     "lint": "yarn run lint:js"
   }
 }
