@@ -1,4 +1,14 @@
 {
+  "author": "WordPress Indonesia Community",
+  "name": "wp-id-org-site",
+  "description": "wp-id.org",
+  "homepage": "https://wp-id.org",
+  "version": "0.1.0",
+  "license": "GPL-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wp-id/site-v2"
+  },
   "devDependencies": {
     "autoprefixer": "^7.1.4",
     "babel-core": "^6.26.0",
