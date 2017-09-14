@@ -22,7 +22,7 @@ function wpid_enqueue_assets() {
 	} else {
 		// In production, we don't load webpack dev server's script and only load
 		// the theme's stylesheet instead.
-		wp_enqueue_style( 'theme', "${assets_dir_url}/assets/theme.css", false, null );
+		wp_enqueue_style( 'theme', "${assets_dir_url}/assets/theme.css", false, '0.1.1' );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'wpid_enqueue_assets' );

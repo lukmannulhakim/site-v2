@@ -8,9 +8,9 @@
 	<body <?php body_class(); ?>>
 		<div class="wrapper">
 			<?php printf(
-				'<img src="%s" alt="%s" />',
-				esc_url( get_stylesheet_directory_uri() . '/wcdps2016-logo.png' ),
-				esc_attr__( 'WordCamp Denpasar 2016 Logo', 'wpid' )
+				'<a href="https://2017.jakarta.wordcamp.org/"><img src="%s" alt="%s" /></a>',
+				esc_url( get_stylesheet_directory_uri() . '/wcjkt2017-logo.png' ),
+				esc_attr__( 'WordCamp Jakarta 2017 Logo', 'wpid' )
 			); ?>
 			<h1>Selamat Datang di Komunitas WordPress Indonesia!</h1>
 
