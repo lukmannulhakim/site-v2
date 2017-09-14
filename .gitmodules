@@ -1,0 +1,3 @@
+[submodule "extensions/webpack"]
+	path = extensions/webpack
+	url = https://github.com/kucrut/wp-docker-compose-webpack

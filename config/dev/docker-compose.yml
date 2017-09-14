@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  db:
+    container_name: wp-id.local-db
+    env_file: ./config/dev/db.env
+
+  backend:
+    container_name: wp-id.local-backend
+    volumes:
+      - "./data/content:/var/www/wp-content"
+      - "./config/dev/php.ini:/etc/php7/conf.d/z-dev.ini:ro"
+      - "./config/dev/wp-configs:/var/www/wp-configs:ro"
+    env_file:
+      - ./config/dev/backend.env
+
+  webpack:
+    container_name: wp-id.local-webpack
+    volumes:
+      - "./config/dev/webpack:/app/config"

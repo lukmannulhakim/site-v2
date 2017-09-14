@@ -4,7 +4,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 LASTUP_FILE="${DIR}/.lastup"
 
 if [ -f $LASTUP_FILE ]; then
-  CMD=$( cat ${LASTUP_FILE} )" down --volumes"
+  CMD="docker-compose $( cat ${LASTUP_FILE} ) down --volumes"
 else
   CMD="docker-compose down --volumes"
 fi

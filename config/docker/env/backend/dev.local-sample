@@ -1,4 +1,0 @@
-# Change this to your user ID: `id -u`
-PUID=1000
-# Change this to your group ID: `id -g`
-PGID=1000

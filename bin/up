@@ -1,8 +1,9 @@
 #!/bin/bash
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-CMD="docker-compose -f docker-compose.yml"
-CONF_DIR=config/docker/compose
+COMPOSE_ARGS="-f docker-compose.yml"
+CONF_DIR=config
+EXT_DIR=extensions
 
 while [[ $# -gt 1 ]]; do
 
@@ -14,8 +15,8 @@ while [[ $# -gt 1 ]]; do
     shift
     ;;
 
-    -f|--frontend)
-    FRONT="$2"
+    -x|--extension)
+    EXTENSIONS+=("$2")
     shift
     ;;
 
@@ -27,27 +28,24 @@ while [[ $# -gt 1 ]]; do
   shift # past argument or value
 done
 
-if [ ! -z $ENV ]; then
-  ENV_FILE="${CONF_DIR}/${ENV}.yml"
-  ENV_LOCAL_FILE="${CONF_DIR}/${ENV}.local.yml"
-
-  if [ -f $ENV_FILE ]; then
-    CMD="${CMD} -f ${ENV_FILE}"
-  fi
-
-  if [ -f $ENV_LOCAL_FILE ]; then
-    CMD="${CMD} -f ${ENV_LOCAL_FILE}"
-  fi
+# Extension configs.
+if [ ${#EXTENSIONS[@]} -gt 0 ]; then
+  for EXT in "${EXTENSIONS[@]}"; do
+    YML_FILES+=( "${EXT_DIR}/${EXT}/docker-compose.yml" )
+  done
 fi
 
-if [ ! -z $FRONT ]; then
-  CMD="${CMD} -f ${CONF_DIR}/${FRONT}.yml"
+# Environment configs.
+: ${ENV:=dev}
+YML_FILES+=( "${CONF_DIR}/${ENV}/docker-compose.yml" )
+YML_FILES+=( "${CONF_DIR}/${ENV}/docker-compose.override.yml" )
 
-  if [ ! -z $ENV ]; then
-    CMD="${CMD} -f ${CONF_DIR}/${FRONT}.${ENV}.yml"
+for YML in "${YML_FILES[@]}"; do
+  if [ -f $YML ]; then
+    COMPOSE_ARGS="${COMPOSE_ARGS} -f ${YML}"
   fi
-fi
+done
 
-echo $CMD > "${DIR}/.lastup"
+echo $COMPOSE_ARGS > "${DIR}/.lastup"
 
-eval "${CMD} up${EXTRA_ARGS}"
+eval "docker-compose ${COMPOSE_ARGS} up${EXTRA_ARGS}"

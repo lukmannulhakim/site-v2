@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  backend:
+    # Network options
+    # 1. Standalone.
+    ports:
+      - "80:80"
+    # 2. With Proxy, see below.
+    #networks:
+    #  - default
+    #  - proxy-tier
+    #environment:
+    # Uncomment if using GNU/Linux, get your UID & GID with `id`.
+    #  PUID: 1000
+    #  PGID: 1000
+
+# If using proxy, don't forget to create the external network first:
+# `docker network create proxy`
+# then uncomment the block below.
+# See https://github.com/kucrut/docker-proxy
+
+#networks:
+#  proxy-tier:
+#    external:
+#      name: proxy

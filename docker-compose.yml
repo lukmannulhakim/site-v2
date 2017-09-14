@@ -1,9 +1,8 @@
-version: '2'
+version: '3'
 
 services:
   db:
     image: kucrut/mariadb
-    container_name: wp-id.org-db
     restart: always
     networks:
       - default
@@ -12,7 +11,6 @@ services:
 
   backend:
     image: kucrut/wordpress
-    container_name: wp-id.org-backend
     restart: always
     depends_on:
       - db
@@ -20,11 +18,3 @@ services:
       - db
     networks:
       - default
-      - proxy-tier
-    volumes:
-      - "./data/content:/var/www/wp-content"
-
-networks:
-  proxy-tier:
-    external:
-      name: proxy
