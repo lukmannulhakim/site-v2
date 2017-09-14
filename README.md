@@ -8,15 +8,15 @@ https://wp-id.org
   ```
 * Clone this repo and enter the directory:
   ```bash
-  git clone https://github.com/wp-id/site-v2.git wp-id.org
+  git clone --recursive https://github.com/wp-id/site-v2.git wp-id.org
   cd wp-id.org
   ```
-* Add `127.0.0.1 wp-id.local` to `/etc/hosts`
-* Create an external docker network for the site:
+* Copy the sample compose override config for dev environment. Feel free to edit the copied file to your liking:
   ```bash
-  docker network create proxy
+  cp config/dev/docker-compose.override.yml-sample config/dev/docker-compose.override.yml
   ```
+* Add `127.0.0.1 wp-id.local` to `/etc/hosts`
 * Run the containers:
   ```bash
-  ./bin/up -e dev
+  ./bin/up -e dev -x webpack
   ```
