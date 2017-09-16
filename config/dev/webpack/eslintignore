@@ -2,3 +2,5 @@
 **/node_modules/**
 **/vendor/**
 **/dist/*
+
+themes/hello-world/assets/theme.js
