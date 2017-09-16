@@ -38,7 +38,10 @@
   "scripts": {
     "build": "NODE_ENV=production webpack --env=production --config webpack.config.js",
     "start": "NODE_ENV=development webpack-dev-server --env=development --config webpack.config.js",
-    "lint:js": "eslint --config ./.eslintrc.json",
-    "lint": "yarn run lint:js"
+    "lint:js": "eslint /app/mu-plugins /app/plugins /app/themes",
+    "lint:css": "stylelint \"/app/mu-plugins/**/*.css /app/plugins/**/*.css /app/themes/**/*.css\"",
+    "lint:scss": "stylelint --syntax scss \"/app/mu-plugins/**/*.scss /app/plugins/**/*.scss /app/themes/**/*.scss\"",
+    "lint:style": "yarn lint:scss && yarn lint:css",
+    "lint": "yarn lint:js && yarn lint:style"
   }
 }
