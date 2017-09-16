@@ -20,3 +20,11 @@ https://wp-id.org
   ```bash
   ./bin/up -e dev -x webpack
   ```
+
+## Useful Commands
+```bash
+# Build assets
+./extensions/webpack/bin/exec build
+# Lint assets
+./extensions/webpack/bin/exec lint
+```
