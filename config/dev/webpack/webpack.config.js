@@ -2,6 +2,7 @@ const path = require( 'path' );
 const webpack = require( 'webpack' );
 const merge = require( 'webpack-merge' );
 const ExtractTextPlugin = require( 'extract-text-webpack-plugin' );
+const StyleLintPlugin = require( 'stylelint-webpack-plugin' );
 const projectConfig = require( './project.config.js' );
 
 module.exports = function ( env ) {
@@ -9,7 +10,7 @@ module.exports = function ( env ) {
 
 	let config = merge({
 		output: {
-			path: __dirname,
+			path: '/app',
 			// The filename of the entry chunk as relative path inside the output.path directory.
 			filename: '[name].js'
 		},
@@ -62,6 +63,9 @@ module.exports = function ( env ) {
 					]
 				}]
 			},
+			plugins: [
+				new StyleLintPlugin({ syntax: 'scss' })
+			],
 			devServer: {
 				host: 'webpack',
 				port: 3000,
