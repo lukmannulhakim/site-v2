@@ -72,7 +72,7 @@ module.exports = function ( env ) {
 				publicPath: '/webpack/',
 				inline: true,
 				hot: false,
-				watchOptions: { poll: true }
+				watchOptions: { ignored: /node_modules/ }
 			},
 			performance: {
 				maxAssetSize: 1000000, // 1 mB.
